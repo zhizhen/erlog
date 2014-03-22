@@ -1,1 +1,7 @@
 ebin/*
+logs/*.log
+.eunit
+*.beam
+*.plt
+*.dump
+deps
