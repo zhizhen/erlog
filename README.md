@@ -18,10 +18,10 @@ How to use
 
 now you can use erlog APIs:
     
-    erlog:print_msg("hello, erlog!~n").
-    erlog:print_msg("hello, ~p~n", [erlog]).
+    erlog:error_msg("hello, erlog!~n").
+    erlog:error_msg("hello, ~p~n", [erlog]).
     ...
-there are 6 log level: print, debug, info, warning, error, critical, which 
+there are 5 log level: debug, info, warning, error, critical, which 
 can be change dynamically by:  
 
     loglevel:set(Level).

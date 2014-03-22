@@ -8,5 +8,5 @@
                   stdlib
                  ]},
   {mod, { erlog_app, []}},
-  {env, []}
+  {env, [{dir, logs}, {prefix, erlog}, {is_mf, true}]}
  ]}.

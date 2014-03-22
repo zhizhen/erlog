@@ -28,11 +28,11 @@
 start(_StartType, _StartArgs) ->
     {ok, Pid} = erlog_sup:start_link(),
     loglevel:set(5),
-    Dir = "logs",
-    Prefix = "erlog",
-    IsMf = true,
+    {ok, Dir} = application:get_env(erlog, dir),
+    {ok, Prefix} = application:get_env(erlog, prefix),
+    {ok, IsMf} = application:get_env(erlog, is_mf),
     gen_event:add_handler(error_logger, file_appender, [Dir, Prefix, IsMf]),
-    ?INFO_MSG("start erlog done !"),
+    ?INFO_MSG("start erlog done ! ~p, ~p, ~p~n", [Dir, Prefix, IsMf]),
     {ok, Pid}.
 
 stop(_State) ->
