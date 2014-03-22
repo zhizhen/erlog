@@ -1,6 +1,6 @@
 erlog
 =====
-a simple, easy, embeddable logger for erlang
+a simple, easy, embeddable logger for erlang  
 一个简单易用，可嵌入其他ap的日志系统
 How to use
 =====
