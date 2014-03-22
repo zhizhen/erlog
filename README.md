@@ -3,9 +3,9 @@ erlog
 a simple, easy logger for erlang  
 features
 =====
-log level can be set dynamically 
-easily be implated to exist apps
-erlog also collect sasl logs
+log level can be set dynamically   
+easily be implated to exist apps  
+erlog also collect sasl logs  
 How to use
 =====
 
