@@ -1,0 +1,9 @@
+{application,erlog,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{erlog_app,[]}},
+              {env,[]},
+              {modules,[dynamic_compile,erlog,erlog_app,erlog_sup,
+                        file_appender,loglevel]}]}.
