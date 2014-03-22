@@ -14,7 +14,10 @@
 start(_StartType, _StartArgs) ->
     {ok, Pid} = erlog_sup:start_link(),
     loglevel:set(5),
-    gen_event:add_handler(error_logger, file_appender, []),
+    Dir = "logs",
+    Prefix = "erlog",
+    IsMf = true,
+    gen_event:add_handler(error_logger, file_appender, [Dir, Prefix, IsMf]),
     ?INFO_MSG("start erlog done !"),
     {ok, Pid}.
 
