@@ -1,7 +1,11 @@
 erlog
 =====
-a simple, easy, embeddable logger for erlang  
-一个简单易用，可嵌入其他ap的日志系统
+a simple, easy logger for erlang  
+features
+=====
+log level can be set dynamically 
+easily be implated to exist apps
+erlog also collect sasl logs
 How to use
 =====
 
@@ -14,5 +18,16 @@ How to use
 
 now you can use erlog APIs:
     
-    erlog:print("hello, erlog!~n").
-    erlog:print("hello, ~p~n", [erlog]).
+    erlog:print_msg("hello, erlog!~n").
+    erlog:print_msg("hello, ~p~n", [erlog]).
+    ...
+there are 6 log level: print, debug, info, warning, error, critical, which 
+can be change dynamically by:  
+
+    loglevel:set(Level).
+
+you can get the current log level by:
+
+    loglevel:get().
+
+
