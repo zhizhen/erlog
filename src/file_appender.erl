@@ -88,7 +88,6 @@ code_change(_OldVsn, State, _Extra) ->
 %%%----------------------------------------------------------------------
 %%% Internal functions
 %%%----------------------------------------------------------------------
-%% @doc 生成日志文件名
 make_log_file(BaseDir, Prefix, IsMf) ->
     ok = filelib:ensure_dir(BaseDir),
     case IsMf of
@@ -99,7 +98,6 @@ make_log_file(BaseDir, Prefix, IsMf) ->
             io_lib:format("~s/~s.log", [BaseDir, Prefix])
     end.
 
-%% @doc 通知服务器在下一个整点刷新日志文件
 trucate_file_at_next_hour() ->
     {_, {H, I, S}} = erlang:localtime(),
     Time = (23-H) * 3600 + ((59 - I) * 60 + (59 - S) + 2) * 1000,
@@ -130,7 +128,7 @@ do_write(Fd, Time, Type, Format, Args) ->
 
 % Copied from erlang_logger_file_h.erl
 write_event(Fd, {Time, {error, _GL, {_Pid, Format, Args}}}) ->
-    [L] = io_lib:format("~ts", ["错误报告"]),
+    [L] = io_lib:format("~s", ["error report"]),
     do_write(Fd, Time, L, Format, Args);
 
 write_event(Fd, {Time, {emulator, _GL, Chars}}) ->
@@ -161,7 +159,7 @@ write_event(Fd, {Time, {info_report, _GL, {Pid, std_info, Rep}}}) ->
 
 
 write_event(Fd, {Time, {info_msg, _GL, {_Pid, Format, Args}}}) ->
-    [L] = io_lib:format("~ts", ["信息报告"]),
+    [L] = io_lib:format("~s", ["info report"]),
     do_write(Fd, Time, L, Format, Args);
 
 write_event(Fd, {Time, {info_report, _GL, {_PID, progress, Detail}}}) ->
@@ -170,7 +168,7 @@ write_event(Fd, {Time, {info_report, _GL, {_PID, progress, Detail}}}) ->
 
 
 write_event(_, Info) ->
-    io:format("~ts ~p", ["未知的消息", Info]),
+    io:format("~s ~p", ["unkown message", Info]),
     ok.
 
 format_report(Rep) when is_list(Rep) ->
