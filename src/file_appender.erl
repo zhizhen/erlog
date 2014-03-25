@@ -99,15 +99,12 @@ make_log_file(BaseDir, Prefix, IsMf) ->
     end.
 
 trucate_file_at_next_hour() ->
-    {_, {H, I, S}} = erlang:localtime(),
+    {_, {_H, I, S}} = erlang:localtime(),
     Time = ((59 - I) * 60 + (59 - S) + 2) * 1000,
 
     Self = self(),
     io:format("starting file timer, left:~p~n", [Time]),
-    spawn_link(fun() ->
-               timer:sleep(Time),
-               Self ! rotate_timer
-           end),
+    timer:send_after(Time, Self, rotate_timer),
     ok.
 
 do_write(Fd, Time, Type, Format, Args) ->
