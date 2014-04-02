@@ -30,4 +30,11 @@ you can get the current log level by:
 
     loglevel:get().
 
+Notice
+=====
+the APIs in erlog is just used for test, so we suppose you to use the Macros in logger.hrl for example:  
+    -include("logger.hrl").
+    ...
+    ?ERROR_MSG("hello, ~p~n", [erlog]),
+    ...
 
